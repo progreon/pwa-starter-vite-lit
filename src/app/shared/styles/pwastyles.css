@@ -1,0 +1,9 @@
+/* @import "tailwindcss"; */
+
+* {
+  /* border: 1px solid red; */
+  /* background-color: gray; */
+  box-sizing: border-box;
+  /* margin: initial; */
+  /* padding: auto; */
+}

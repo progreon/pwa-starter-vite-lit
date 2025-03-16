@@ -1,0 +1,9 @@
+{
+  "directoryListing": false,
+  "rewrites": [
+    { "source": "vite-lit/**", "destination": "/vite-lit/index.html" }
+  ],
+  "redirects": [
+    { "source": "/", "destination": "/vite-lit/" }
+  ]
+}
