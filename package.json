@@ -3,9 +3,10 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
+  "license": "ISC",
   "scripts": {
     "dev": "vite",
-    "go": "yarn dev --open",
+    "start": "yarn dev --open",
     "build": "tsc && vite build",
     "preview": "vite preview",
     "serve": "serve dist"
