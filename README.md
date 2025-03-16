@@ -1,2 +1,2 @@
-# pwa-starter-kit-lit
-PWA starter kit with lit/ts/webpack
+# pwa-starter-vite-lit
+PWA starter kit with vite/lit/ts/redux
