@@ -1,0 +1,24 @@
+# TODO
+
+- [x]  Vite setup with TS
+- [x]  `POC` PWA setup
+- [x]  `POC` Css imports
+- [x]  VS Code debugger setup
+- [x]  `Test` Tailwind (disabled now, found it annoying with the current example)
+- [x]  `POC` Redux
+- [ ]  Redux Routing (let's try to make it simpler than last time)
+- [ ]  `POC` App & pages
+- [ ]  `Test` browser storage manager
+- [ ]  `Test` Mixing with JS components
+- [ ]  `POC` Asset imports
+  - [ ]  JSON
+  - [ ]  Images
+  - [ ]  ...?
+- [ ]  Proper naming of app & components
+- [ ]  Example content: ?
+- [ ]  `POC` Building for different environments (Vite config)
+- [ ]  `POC` GitHub Actions
+- [ ]  `POC` Github Pages
+- [ ]  `POC` Firebase
+- [ ]  As GitHub template?
+- [ ]  ...

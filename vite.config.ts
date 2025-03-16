@@ -3,7 +3,7 @@ import { VitePWA } from 'vite-plugin-pwa';
 import { viteStaticCopy } from 'vite-plugin-static-copy';
 import { createHtmlPlugin } from 'vite-plugin-html';
 import tsconfigPaths from 'vite-tsconfig-paths'
-import tailwindcss from '@tailwindcss/vite'
+// import tailwindcss from '@tailwindcss/vite'
 // import { m } from '@vite-pwa/assets-generator/dist/shared/assets-generator.5e51fd40.mjs';
 
 // https://vitejs.dev/config/
@@ -18,21 +18,6 @@ export default defineConfig(({ command, mode, isSsrBuild, isPreview }) => {
       emptyOutDir: true, // Clears <outDir> before building
       outDir: 'dist/vite-lit'
     },
-    // resolve: {
-    //   alias: {
-    //     "App": "src/app",
-    //     "Core": "src/app/core",
-    //     "CoreActions": "src/app/core/actions",
-    //     "CoreComponents": "src/app/core/components",
-    //     "CoreReducers": "src/app/core/reducers",
-    //     "Redux": "src/app/core/redux",
-    //     "Images": "src/app/images",
-    //     "SharedComponents": "src/app/shared/components",
-    //     "SharedData": "src/app/shared/data",
-    //     "SharedModules": "src/app/shared/modules",
-    //     "Shared": "src/app/shared"
-    //   }
-    // },
     plugins: [
       tsconfigPaths(),
       VitePWA({
@@ -96,7 +81,7 @@ export default defineConfig(({ command, mode, isSsrBuild, isPreview }) => {
           ]
         }
       }),
-      // tailwindcss(),
+      // tailwindcss(), // uncomment if you want to use tailwind
     ],
   }
 })
