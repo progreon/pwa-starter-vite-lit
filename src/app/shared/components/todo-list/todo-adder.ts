@@ -23,7 +23,7 @@ export class TodoAdder extends LitElement {
       </div>
     `;
   }
-  
+
   private _onClickAdd() {
     // const todo = this.dummyTodos.shift();
     let input: HTMLInputElement = <HTMLInputElement> this.shadowRoot.getElementById("input");
@@ -63,6 +63,15 @@ export class TodoAdder extends LitElement {
     button:focus,
     button:focus-visible {
       outline: 4px auto -webkit-focus-ring-color;
+    }
+
+    @media (prefers-color-scheme: light) {
+      a:hover {
+        color: #747bff;
+      }
+      button {
+        background-color: #f9f9f9;
+      }
     }
   `];
 

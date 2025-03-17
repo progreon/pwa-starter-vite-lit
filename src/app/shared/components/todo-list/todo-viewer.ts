@@ -73,6 +73,15 @@ export class TodoViewer extends ConnectMixin(store, true)(LitElement) {
     button:focus-visible {
       outline: 4px auto -webkit-focus-ring-color;
     }
+
+    @media (prefers-color-scheme: light) {
+      a:hover {
+        color: #747bff;
+      }
+      button {
+        background-color: #f9f9f9;
+      }
+    }
   `];
 
 }
