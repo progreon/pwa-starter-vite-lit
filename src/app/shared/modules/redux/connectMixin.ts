@@ -6,8 +6,8 @@ export const ConnectMixin = (store: PwaStore) => <T extends Constructor<LitEleme
   protected __storeUnsubscribe: () => void;
   connectedCallback() {
     // Connect the element to the store.
-    this.__storeUnsubscribe = store.subscribe(() => this._loggedStateChanged(store.getState()));
-    this._loggedStateChanged(store.getState());
+    this.__storeUnsubscribe = store.subscribe(() => this._stateChanged(store.getState()));
+    this._stateChanged(store.getState());
     if (super.connectedCallback) {
       super.connectedCallback();
     }
@@ -18,11 +18,8 @@ export const ConnectMixin = (store: PwaStore) => <T extends Constructor<LitEleme
       super.disconnectedCallback();
     }
   }
-  private _loggedStateChanged(_state: PwaState) {
-    this._stateChanged(_state);
-  }
   // This is called every time something is updated in the store.
-  protected _stateChanged(_state: PwaState) {
+  protected _stateChanged(state: PwaState): void {
     throw new Error('_stateChanged() not implemented');
   }
 };
