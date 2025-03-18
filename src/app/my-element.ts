@@ -4,10 +4,11 @@ import { PWAElement } from './PWAElement'
 
 import litLogo from '/assets/lit.svg'
 import appLogo from '/favicon.svg'
-import './pwa-updater'
+// import './pwa-updater'
 import '@components/todo-list/todo-viewer'
 import '@components/todo-list/todo-adder'
-import { store, ConnectMixin, PwaState, increment } from '@redux'
+import { store, ConnectMixin, PwaState, increment, navigate, navigateToPage } from '@redux'
+import { installRouter } from './shared/modules/redux/router'
 
 /**
  * An example element.
@@ -29,6 +30,9 @@ export class MyElement extends ConnectMixin(store)(LitElement) {
   @property({ type: Number })
   count = 0
 
+  @property()
+  page: string;
+
   render() {
     return html`
       <div id="content" class="flex flex-col">
@@ -36,11 +40,21 @@ export class MyElement extends ConnectMixin(store)(LitElement) {
           <a href="https://vite.dev" target="_blank">
             <img src=${appLogo} class="logo" alt="vite-pwa-test logo" />
           </a>
-          <a href="https://lit.dev" target="_blank">
+          <a href="https://lit.dev">
             <img src=${litLogo} class="logo lit" alt="Lit logo" />
           </a>
         </div>
         <slot></slot>
+        <div>Current page: ${this.page}</div>
+        <div>
+          <a href="/vite-lit/">home</a>|
+          <a href="/vite-lit/test1">test1</a>|
+          <a href="/vite-lit/test2?p1=foo&p2=bar#asdf">test2</a>|
+          <a href="/vite-lit/test2/sub">sub2</a>|
+          <a href="/noctx">noctx</a>|
+          <a href="/otherctx/test">otherctx</a>|
+          <a @click=${this._onAClick}>_onAClick</a>
+        </div>
         <div class="card">
           <button @click=${this._onClick} part="button">
             count is ${this.count}
@@ -56,18 +70,28 @@ export class MyElement extends ConnectMixin(store)(LitElement) {
     `
   }
 
+  connectedCallback(): void {
+    super.connectedCallback();
+    installRouter(store, 'home', '/vite-lit');
+  }
+
   private _onClick() {
     store.dispatch(increment());
   }
 
-  _stateChanged(_state: PwaState) {
-    this.count = _state.counter.value;
+  private _onAClick() {
+    navigateToPage('_onAClick');
+  }
+
+  _stateChanged(state: PwaState) {
+    this.count = state.counter.value;
+    this.page = state.router.page;
   }
 
   static styles = [PWAElement.styles, css`
-    * {
-      /* border: 1px solid red; */
-    }
+    /* * {
+      border: 1px solid red;
+    } */
     :host {
       /* padding: 2rem; */
       /* margin: 0 auto; */

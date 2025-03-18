@@ -6,8 +6,13 @@
 - [x]  VS Code debugger setup
 - [x]  `Test` Tailwind (disabled now, found it annoying with the current example)
 - [x]  `POC` Redux
-- [ ]  Redux Routing (let's try to make it simpler than last time)
+- [x]  Redux Routing (let's try to make it simpler than last time)
 - [ ]  `POC` App & pages
+- [ ]  More redux
+  - [ ]  'App View'
+    - [ ]  mobile
+    - [ ]  theme
+    - [ ]  ...?
 - [ ]  `Test` browser storage manager
 - [ ]  `Test` Mixing with JS components
 - [ ]  `POC` Asset imports

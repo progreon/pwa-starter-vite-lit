@@ -1,19 +1,30 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
-export class PRWRouterState {
-  page: string = '';
-  attributes: { [key: string]: string | string[] } = {};
+export interface RouterState {
+  page: string
+  /**
+   * You can get a proper searchParams object by running new URLSearchParams(search)
+   */
+  search?: string
+  hash?: string
+  scroll?: number
 }
+
+const initialState: RouterState = { page: '' }
 
 const routerSlice = createSlice({
   name: 'router',
-  initialState: [],
+  initialState,
   reducers: {
-    navigate(state, action: { payload: PRWRouterState, type: string}) {
-      state.push(action.payload)
+    navigatedToPage: (state: RouterState, action: PayloadAction<RouterState>) => {
+      const ns = action.payload // new state
+      state.page = ns.page
+      state.search = ns.search
+      state.hash = ns.hash
+      state.scroll = ns.scroll
     }
   }
 });
 
-export const { navigate } = routerSlice.actions;
+export const { navigatedToPage } = routerSlice.actions;
 export default routerSlice.reducer;

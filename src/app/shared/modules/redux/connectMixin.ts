@@ -2,7 +2,7 @@ import { LitElement } from 'lit';
 import { PwaStore, PwaState } from './store';
 
 declare type Constructor<T> = new (...args: any[]) => T;
-export const ConnectMixin = (store: PwaStore, debug = false) => <T extends Constructor<LitElement>>(superClass: T) => class extends superClass {
+export const ConnectMixin = (store: PwaStore) => <T extends Constructor<LitElement>>(superClass: T) => class extends superClass {
   protected __storeUnsubscribe: () => void;
   connectedCallback() {
     // Connect the element to the store.
@@ -19,9 +19,6 @@ export const ConnectMixin = (store: PwaStore, debug = false) => <T extends Const
     }
   }
   private _loggedStateChanged(_state: PwaState) {
-    if (debug) {
-      console.debug("state changed", _state);
-    }
     this._stateChanged(_state);
   }
   // This is called every time something is updated in the store.

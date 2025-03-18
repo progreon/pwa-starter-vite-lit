@@ -8,7 +8,7 @@ import { store, ConnectMixin, todoToggled, PwaState, todoCleared } from '@redux'
 import pwastyles from '@styles/pwastyles.css?inline';
 
 @customElement('todo-viewer')
-export class TodoViewer extends ConnectMixin(store, true)(LitElement) {
+export class TodoViewer extends ConnectMixin(store)(LitElement) {
 
   @property({ type: Array })
   todoList = [];
