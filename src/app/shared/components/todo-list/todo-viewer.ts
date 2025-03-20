@@ -62,7 +62,7 @@ export class TodoViewer extends ConnectMixin(store)(LitElement) {
       font-size: 1em;
       font-weight: 500;
       font-family: inherit;
-      background-color: #1a1a1a;
+      background-color: #f9f9f9;
       cursor: pointer;
       transition: border-color 0.25s;
     }
@@ -74,14 +74,11 @@ export class TodoViewer extends ConnectMixin(store)(LitElement) {
       outline: 4px auto -webkit-focus-ring-color;
     }
 
-    @media (prefers-color-scheme: light) {
-      a:hover {
-        color: #747bff;
-      }
+    /* @media (prefers-color-scheme: dark) {
       button {
-        background-color: #f9f9f9;
+        background-color: #1a1a1a;
       }
-    }
+    } */
   `];
 
 }

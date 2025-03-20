@@ -7,12 +7,16 @@
 - [x]  `Test` Tailwind (disabled now, found it annoying with the current example)
 - [x]  `POC` Redux
 - [x]  Redux Routing (let's try to make it simpler than last time)
-- [ ]  `POC` App & pages
+- [x]  `POC` App & pages
 - [ ]  More redux
   - [ ]  'App View'
     - [ ]  mobile
     - [ ]  theme
+    - [ ]  meta (title)
     - [ ]  ...?
+  - [ ]  menu
+  - [ ]  (list of) toast(s)
+  - [ ]  ...?
 - [ ]  `Test` browser storage manager
 - [ ]  `Test` Mixing with JS components
 - [ ]  `POC` Asset imports

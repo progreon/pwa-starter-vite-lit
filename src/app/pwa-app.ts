@@ -7,64 +7,175 @@ import { store, ConnectMixin, PwaState, installRouter } from '@redux';
 
 // styles
 import pwastyles from '@styles/pwastyles.css?inline';
+import { PwaPage404 } from './core/components/pages/pwa-page-404';
+import { PwaPage } from './core/components/pages/PwaPage';
+import { PwaPagePage1 } from './core/components/pages/pwa-page-page1';
+import { PwaPagePage2 } from './core/components/pages/pwa-page-page2';
+import { PwaPageHome } from './core/components/pages/pwa-page-home';
 
 // import '@pwaMenu/pwa-menu-bar';
 
-interface TempNav {
-  page: string
-  href: string
-  title: string
-  subnav?: TempNav[]
+// TODO: nav stuff to separate file?
+type NavMap = { [key: string]: Nav };
+class Nav {
+  protected static HREF_DELIMITER = '/';
+
+  private _href: string;
+  constructor(
+    public readonly title: string,
+    public readonly page: PwaPage,
+    public readonly navMap?: NavMap,
+    public readonly showInMenu = true
+  ) { }
+  protected set href(href: string) {
+    this._href = href;
+    this.page.href = href;
+    if (this.navMap) {
+      Object.keys(this.navMap).forEach(key => {
+        const nav = this.navMap[key];
+        nav.href = (href ? href + Nav.HREF_DELIMITER : '') + key;
+      })
+    }
+  }
+  get href(): string {
+    return this._href;
+  }
+  getPage(key: string): PwaPage {
+    if (!key) {
+      return this.page;
+    } else {
+      const i = key.indexOf(Nav.HREF_DELIMITER);
+      const subKey = i >= 0 ? key.substring(0, key.indexOf(Nav.HREF_DELIMITER)) : key;
+      const restKey = i >= 0 ? key.substring(key.indexOf(Nav.HREF_DELIMITER) + 1) : undefined;
+      const subNav = this.navMap[subKey];
+      return subNav ? subNav.getPage(restKey) : undefined;
+    }
+  }
+}
+class RootNav extends Nav {
+  constructor(
+    contextPath: string,
+    title: string,
+    navMap: NavMap,
+    public readonly fourOFour: Nav,
+    public readonly home: string = 'home'
+  ) {
+    // super('/', '/', '/', subnav[home].page, subnav);
+    super(title, navMap[home]?.page, navMap);
+    this.href = contextPath;
+    // this.href = '';
+  }
+  getPage(key: string): PwaPage {
+    const page = super.getPage(key);
+    return page || this.fourOFour.page;
+  }
 }
 
 @customElement('pwa-app')
 export class PwaApp extends ConnectMixin(store)(LitElement) {
 
   @property({ type: String })
-  private page: string = 'home';
-  @property({ type: Array })
-  private tempnav: TempNav[] = [
-    { page: 'home', href: '/vite-lit/', title: 'Home' },
-    { page: 'test1', href: '/vite-lit/test1', title: 'Test 1' },
-    {
-      page: 'test2', href: '/vite-lit/test2?p1=foo&p2=bar#asdf', title: 'Test 2', subnav: [
-        { page: 'test2/sub', href: '/vite-lit/test2/sub', title: 'Sub' }
-      ]
-    }
-  ];
+  public page: string = 'home';
+  private readonly rootNav: RootNav = new RootNav('/vite-lit', 'test title', {
+    'home': new Nav('Home', new PwaPageHome(this)),
+    'test1': new Nav('Test 1', new PwaPagePage1(this)),
+    'test2': new Nav('Test 2', new PwaPagePage2(this))
+  }, new Nav('404 - Page Not Found', new PwaPage404(this)));
 
-  private _renderTempNavUl(tempNav: TempNav[]) {
+  private _renderNavMapUl(navMap: NavMap) {
     return html`
       <ul>
-        ${tempNav.map(nav => html`
-          <li>
-            <a href='${nav.href}'>${nav.title}</a>
-            ${nav.subnav ? this._renderTempNavUl(nav.subnav) : html``}
-          </li>
-        `)}
+        ${Object.keys(navMap).filter(key => navMap[key].showInMenu).map(key => {
+      const nav = navMap[key];
+      return html`
+            <li>
+              <a href='${nav.href}'>${nav.title}</a>
+              ${nav.navMap && this._renderNavMapUl(nav.navMap)}
+            </li>
+          `;
+    })}
       </ul>
     `;
   }
 
   render() {
+    // console.log(window.customElements.getName(PwaPage404));
     return html`
       <header>
         <h1>This is the header</h1>
         <h3>And this is a sub-header</h3>
       </header>
       <nav>
-        ${this._renderTempNavUl(this.tempnav)}
+        ${this._renderNavMapUl(this.rootNav.navMap)}
       </nav>
       <main>
-        <h1>Hello Vite/Lit/TS world!</h1>
-        <p>You are on page: ${this.page}</p>
+        <div class="page">
+          ${this.rootNav.getPage(this.page)}
+        </div>
       </main>
     `;
   }
 
   static styles: CSSResultGroup = [unsafeCSS(pwastyles), css`
-    * {
+    /* * {
       border: 1px solid brown;
+    } */
+
+    :host {
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+    }
+
+    header {
+      background-color: darkslategray;
+      color: lightgray;
+      text-align: center;
+      padding: 1em;
+    }
+
+    nav {
+      background-color: slategray;
+      display: flex;
+      justify-content: center;
+    }
+
+    nav ul {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      /* justify-content: center; */
+    }
+
+    nav li {
+      margin: 0;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: lightgray;
+      padding: 1em;
+      display: block;
+      transition: background-color 0.3s ease;
+    }
+
+    nav a:hover {
+      background-color: darkolivegreen;
+    }
+
+    main {
+      flex: 1;
+      padding: 1em;
+    }
+
+    .page {
+      max-width: 1000px;
+      margin: 0 auto;
+      background-color: white;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px gray;
     }
   `];
 
@@ -78,9 +189,3 @@ export class PwaApp extends ConnectMixin(store)(LitElement) {
   }
 
 }
-
-// declare global {
-//   interface HTMLElementTagNameMap {
-//     'pwa-app': PwaApp
-//   }
-// }
