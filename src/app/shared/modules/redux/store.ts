@@ -10,7 +10,15 @@ export const rootReducer = combineReducers({
   router: routerReducer, // Ensure this exists
 });
 
-const preloadedState = loadStateFromLocalStorage();
+const preloadedState = await loadStateFromLocalStorage();
+
+// const createAppStore = (preloadedState) => {
+//   return configureStore({
+//     reducer: rootReducer,
+//     preloadedState,
+//     middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(localStorageMiddleware)
+//   });
+// }
 
 export const store = configureStore({
   reducer: rootReducer,

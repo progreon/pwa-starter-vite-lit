@@ -14,7 +14,7 @@
     - [ ]  theme
     - [ ]  meta (title)
     - [ ]  ...?
-  - [ ]  menu
+  - [ ]  mobile menu
   - [ ]  (list of) toast(s)
   - [ ]  ...?
 - [ ]  `Test` browser storage manager

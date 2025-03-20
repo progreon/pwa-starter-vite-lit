@@ -2,6 +2,9 @@ import { TemplateResult, CSSResultGroup, LitElement, css, html, unsafeCSS } from
 import { customElement, property } from 'lit/decorators.js'
 import { PwaPage } from './PwaPage';
 
+import "@volvo/vcdk";
+// import { Button } from "@volvo/vcdk";
+
 import '@components/todo-list/todo-adder';
 
 @customElement('pwa-page-home')
@@ -13,6 +16,9 @@ export class PwaPageHome extends PwaPage {
       <hr>
       <p>You can add some todo's here, which are shown on Page 1:</p>
       <todo-adder></todo-adder>
+      <hr>
+      <p>vcdk test</p>
+      <vcdk-button>Click me</vcdk-button>
     `
   }
 }

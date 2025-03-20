@@ -6,6 +6,14 @@
     <title><%= title %></title>
 
     <link rel="stylesheet" href="./index.css" />
+    <script src="/node_modules/localforage/dist/localforage.min.js" type="module"></script>
+    <script>
+      localforage.config({
+        name: 'vite-pwa',
+        storeName: 'vite-pwa'
+      });
+      console.log('localforage is: ', localforage);
+    </script>
     <script type="module" src="/src/app/pwa-app.ts"></script>
     <!-- <script type="module" src="/src/app/my-element.ts"></script> -->
   </head>

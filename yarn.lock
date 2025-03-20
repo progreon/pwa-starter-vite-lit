@@ -927,6 +927,26 @@
   resolved "https://registry.yarnpkg.com/@esbuild/win32-x64/-/win32-x64-0.25.1.tgz#7d79922cb2d88f9048f06393dbf62d2e4accb584"
   integrity sha512-Y1EQdcfwMSeQN/ujR5VayLOJ1BHaK+ssyk0AEzPjC+t1lITgsnccPqFjb6V+LsTp/9Iov4ysfjxLaGJ9RPtkVg==
 
+"@floating-ui/core@^1.6.0":
+  version "1.6.9"
+  resolved "https://pkgs.dev.azure.com/VolvoGroup-PRD/CO-Pilot/_packaging/Co-Pilot-Azure/npm/registry/@floating-ui/core/-/core-1.6.9.tgz#64d1da251433019dafa091de9b2886ff35ec14e6"
+  integrity sha1-ZNHaJRQzAZ2voJHemyiG/zXsFOY=
+  dependencies:
+    "@floating-ui/utils" "^0.2.9"
+
+"@floating-ui/dom@1.x":
+  version "1.6.13"
+  resolved "https://pkgs.dev.azure.com/VolvoGroup-PRD/CO-Pilot/_packaging/Co-Pilot-Azure/npm/registry/@floating-ui/dom/-/dom-1.6.13.tgz#a8a938532aea27a95121ec16e667a7cbe8c59e34"
+  integrity sha1-qKk4UyrqJ6lRIewW5meny+jFnjQ=
+  dependencies:
+    "@floating-ui/core" "^1.6.0"
+    "@floating-ui/utils" "^0.2.9"
+
+"@floating-ui/utils@^0.2.9":
+  version "0.2.9"
+  resolved "https://pkgs.dev.azure.com/VolvoGroup-PRD/CO-Pilot/_packaging/Co-Pilot-Azure/npm/registry/@floating-ui/utils/-/utils-0.2.9.tgz#50dea3616bc8191fb8e112283b49eaff03e78429"
+  integrity sha1-UN6jYWvIGR+44RIoO0nq/wPnhCk=
+
 "@jridgewell/gen-mapping@^0.3.5":
   version "0.3.8"
   resolved "https://registry.yarnpkg.com/@jridgewell/gen-mapping/-/gen-mapping-0.3.8.tgz#4f0e06362e01362f823d348f1872b08f666d8142"
@@ -972,12 +992,26 @@
   resolved "https://registry.yarnpkg.com/@lit-labs/ssr-dom-shim/-/ssr-dom-shim-1.3.0.tgz#a28799c463177d1a0b0e5cefdc173da5ac859eb4"
   integrity sha512-nQIWonJ6eFAvUUrSlwyHDm/aE8PBDu5kRpL0vHMg6K8fK3Diq1xdPjTnsJSwxABhaZ+5eBi1btQB5ShUTKo4nQ==
 
-"@lit/reactive-element@^2.0.4":
+"@lit/context@1.x":
+  version "1.1.4"
+  resolved "https://pkgs.dev.azure.com/VolvoGroup-PRD/CO-Pilot/_packaging/Co-Pilot-Azure/npm/registry/@lit/context/-/context-1.1.4.tgz#5f124ba8c6c9d62e217b78a76e8e3f8837b81765"
+  integrity sha1-XxJLqMbJ1i4he3inbo4/iDe4F2U=
+  dependencies:
+    "@lit/reactive-element" "^1.6.2 || ^2.0.0"
+
+"@lit/reactive-element@^1.0.0 || ^2.0.0", "@lit/reactive-element@^1.6.2 || ^2.0.0", "@lit/reactive-element@^2.0.4":
   version "2.0.4"
   resolved "https://registry.yarnpkg.com/@lit/reactive-element/-/reactive-element-2.0.4.tgz#8f2ed950a848016383894a26180ff06c56ae001b"
   integrity sha512-GFn91inaUa2oHLak8awSIigYz0cU0Payr1rcFsrkf5OJ5eSPxElyZfKh0f2p9FsTiZWXQdWGJeXZICEfXXYSXQ==
   dependencies:
     "@lit-labs/ssr-dom-shim" "^1.2.0"
+
+"@lit/task@1.x":
+  version "1.0.2"
+  resolved "https://pkgs.dev.azure.com/VolvoGroup-PRD/CO-Pilot/_packaging/Co-Pilot-Azure/npm/registry/@lit/task/-/task-1.0.2.tgz#2d1da95c3cdbb371479944eead3f1d9bf2c60bbb"
+  integrity sha1-LR2pXDzbs3FHmUTurT8dm/LGC7s=
+  dependencies:
+    "@lit/reactive-element" "^1.0.0 || ^2.0.0"
 
 "@nodelib/fs.scandir@2.1.5":
   version "2.1.5"
@@ -1306,6 +1340,24 @@
     sharp "^0.32.6"
     sharp-ico "^0.1.5"
     unconfig "^0.3.11"
+
+"@volvo/vcdk-assets@^1.1.0":
+  version "1.1.0"
+  resolved "https://pkgs.dev.azure.com/VolvoGroup-PRD/CO-Pilot/_packaging/Co-Pilot-Azure/npm/registry/@volvo/vcdk-assets/-/vcdk-assets-1.1.0.tgz#80b50f0aedf205f3237e87c44340918a3061fd23"
+  integrity sha1-gLUPCu3yBfMjfofEQ0CRijBh/SM=
+
+"@volvo/vcdk-tokens@^1.1.0":
+  version "1.1.0"
+  resolved "https://pkgs.dev.azure.com/VolvoGroup-PRD/CO-Pilot/_packaging/Co-Pilot-Azure/npm/registry/@volvo/vcdk-tokens/-/vcdk-tokens-1.1.0.tgz#98345252d9a0463578627353e7ead6b7d9dc23ef"
+  integrity sha1-mDRSUtmgRjV4YnNT5+rWt9ncI+8=
+
+"@volvo/vcdk@^9.8.0":
+  version "9.8.0"
+  resolved "https://pkgs.dev.azure.com/VolvoGroup-PRD/CO-Pilot/_packaging/Co-Pilot-Azure/npm/registry/@volvo/vcdk/-/vcdk-9.8.0.tgz#f5a0024fb047bbea696d31992e0d0dfbead1bc42"
+  integrity sha1-9aACT7BHu+ppbTGZLg0N++rRvEI=
+  dependencies:
+    "@volvo/vcdk-assets" "^1.1.0"
+    "@volvo/vcdk-tokens" "^1.1.0"
 
 "@zeit/schemas@2.36.0":
   version "2.36.0"
@@ -1867,6 +1919,11 @@ data-view-byte-offset@^1.0.1:
     es-errors "^1.3.0"
     is-data-view "^1.0.1"
 
+date-fns@3.x:
+  version "3.6.0"
+  resolved "https://pkgs.dev.azure.com/VolvoGroup-PRD/CO-Pilot/_packaging/Co-Pilot-Azure/npm/registry/date-fns/-/date-fns-3.6.0.tgz#f20ca4fe94f8b754951b24240676e8618c0206bf"
+  integrity sha1-8gyk/pT4t1SVGyQkBnboYYwCBr8=
+
 debug@2.6.9:
   version "2.6.9"
   resolved "https://registry.yarnpkg.com/debug/-/debug-2.6.9.tgz#5d128515df134ff327e90a4c93f4e077a536341f"
@@ -2016,6 +2073,11 @@ electron-to-chromium@^1.5.73:
   version "1.5.118"
   resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.5.118.tgz#064bda9bfea1611074288adb1fdd1f787a131e21"
   integrity sha512-yNDUus0iultYyVoEFLnQeei7LOQkL8wg8GQpkPCRrOlJXlcCwa6eGKZkxQ9ciHsqZyYbj8Jd94X1CTPzGm+uIA==
+
+element-internals-polyfill@1.x:
+  version "1.3.13"
+  resolved "https://pkgs.dev.azure.com/VolvoGroup-PRD/CO-Pilot/_packaging/Co-Pilot-Azure/npm/registry/element-internals-polyfill/-/element-internals-polyfill-1.3.13.tgz#f03e77d6c1c6b5e2d49ee73683ee19aec82b17f8"
+  integrity sha1-8D531sHGteLUnuc2g+4ZrsgrF/g=
 
 emoji-regex@^8.0.0:
   version "8.0.0"
@@ -2521,6 +2583,11 @@ ieee754@^1.1.13:
   resolved "https://registry.yarnpkg.com/ieee754/-/ieee754-1.2.1.tgz#8eb7a10a63fff25d15a57b001586d177d1b0d352"
   integrity sha512-dcyqhDvX1C46lXZcVqCpK+FtMRQVdIMN6/Df5js2zouUsqG7I6sFxitIC+7KYK29KdXOLHdu9zL4sFnoVQnqaA==
 
+immediate@~3.0.5:
+  version "3.0.6"
+  resolved "https://pkgs.dev.azure.com/VolvoGroup-PRD/CO-Pilot/_packaging/Co-Pilot-Azure/npm/registry/immediate/-/immediate-3.0.6.tgz#9db1dbd0faf8de6fbe0f5dd5e56bb606280de69b"
+  integrity sha1-nbHb0Pr43m++D13V5Wu2BigN5ps=
+
 immer@^10.0.3:
   version "10.1.1"
   resolved "https://registry.yarnpkg.com/immer/-/immer-10.1.1.tgz#206f344ea372d8ea176891545ee53ccc062db7bc"
@@ -2863,6 +2930,13 @@ leven@^3.1.0:
   resolved "https://registry.yarnpkg.com/leven/-/leven-3.1.0.tgz#77891de834064cccba82ae7842bb6b14a13ed7f2"
   integrity sha512-qsda+H8jTaUaN/x5vzW2rzc+8Rw4TAQ/4KjB46IwK5VH+IlVeeeje/EoZRpiXvIqjFgK84QffqPztGI3VBLG1A==
 
+lie@3.1.1:
+  version "3.1.1"
+  resolved "https://pkgs.dev.azure.com/VolvoGroup-PRD/CO-Pilot/_packaging/Co-Pilot-Azure/npm/registry/lie/-/lie-3.1.1.tgz#9a436b2cc7746ca59de7a41fa469b3efb76bd87e"
+  integrity sha1-mkNrLMd0bKWd56QfpGmz77dr2H4=
+  dependencies:
+    immediate "~3.0.5"
+
 lightningcss-darwin-arm64@1.29.2:
   version "1.29.2"
   resolved "https://registry.yarnpkg.com/lightningcss-darwin-arm64/-/lightningcss-darwin-arm64-1.29.2.tgz#6ceff38b01134af48e859394e1ca21e5d49faae6"
@@ -2955,6 +3029,18 @@ lit@^3.2.1:
     "@lit/reactive-element" "^2.0.4"
     lit-element "^4.1.0"
     lit-html "^3.2.0"
+
+localforage@^1.10.0:
+  version "1.10.0"
+  resolved "https://pkgs.dev.azure.com/VolvoGroup-PRD/CO-Pilot/_packaging/Co-Pilot-Azure/npm/registry/localforage/-/localforage-1.10.0.tgz#5c465dc5f62b2807c3a84c0c6a1b1b3212781dd4"
+  integrity sha1-XEZdxfYrKAfDqEwMahsbMhJ4HdQ=
+  dependencies:
+    lie "3.1.1"
+
+lodash-es@4.x:
+  version "4.17.21"
+  resolved "https://pkgs.dev.azure.com/VolvoGroup-PRD/CO-Pilot/_packaging/Co-Pilot-Azure/npm/registry/lodash-es/-/lodash-es-4.17.21.tgz#43e626c46e6591b7750beb2b50117390c609e3ee"
+  integrity sha1-Q+YmxG5lkbd1C+srUBFzkMYJ4+4=
 
 lodash.debounce@^4.0.8:
   version "4.0.8"
