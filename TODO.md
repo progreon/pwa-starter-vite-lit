@@ -14,10 +14,11 @@
     - [ ]  theme
     - [ ]  meta (title)
     - [ ]  ...?
-  - [ ]  menu
+  - [ ]  mobile menu
   - [ ]  (list of) toast(s)
   - [ ]  ...?
-- [ ]  `Test` browser storage manager
+- [x]  `Test` browser storage manager
+  - localforage (but used via the redux store atm)
 - [ ]  `Test` Mixing with JS components
 - [ ]  `POC` Asset imports
   - [ ]  JSON

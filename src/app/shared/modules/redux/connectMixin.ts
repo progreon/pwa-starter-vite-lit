@@ -6,7 +6,10 @@ export const ConnectMixin = (store: PwaStore) => <T extends Constructor<LitEleme
   protected __storeUnsubscribe: () => void;
   connectedCallback() {
     // Connect the element to the store.
-    this.__storeUnsubscribe = store.subscribe(() => this._stateChanged(store.getState()));
+    this.__storeUnsubscribe = store.subscribe(() => {
+      // console.debug('state:', store.getState())
+      this._stateChanged(store.getState())
+    });
     this._stateChanged(store.getState());
     if (super.connectedCallback) {
       super.connectedCallback();

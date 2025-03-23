@@ -12,7 +12,7 @@ export interface RouterState {
 
 const initialState: RouterState = { page: '' }
 
-const routerSlice = createSlice({
+export const routerSlice = createSlice({
   name: 'router',
   initialState,
   reducers: {
@@ -27,4 +27,4 @@ const routerSlice = createSlice({
 });
 
 export const { navigatedToPage } = routerSlice.actions;
-export default routerSlice.reducer;
+export const routerReducer = routerSlice.reducer;

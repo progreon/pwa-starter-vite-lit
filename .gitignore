@@ -138,6 +138,8 @@ dev-dist
 .yarn/install-state.gz
 .pnp.*
 
+.npmrc
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json

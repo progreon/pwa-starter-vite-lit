@@ -1,37 +1,35 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 
 export interface TodoState {
-  id: number
-  text: string
-  completed: boolean
+  list: {
+    id: number
+    text: string
+    completed: boolean
+  }[]
 }
 
-// const persistedStateString = localStorage.getItem('redux/todos');
-// const initialState: TodoState[] = persistedStateString ? JSON.parse(persistedStateString) : []
-// const persistState = state => localStorage.setItem('redux/todos', JSON.stringify(state));
+const initialState: TodoState = { list: [] }
 
-const initialState: TodoState[] = []
-
-const todosSlice = createSlice({
+export const todosSlice = createSlice({
   name: 'todos',
   initialState,
   reducers: {
-    todoAdded: (state: TodoState[], action: PayloadAction<string>) => {
-      state.push({
-        id: state.length+1,
+    todoAdded: (state: TodoState, action: PayloadAction<string>) => {
+      state.list.push({
+        id: state.list.length+1,
         text: action.payload,
         completed: false
       })
     },
-    todoToggled: (state: TodoState[], action: PayloadAction<number>) => {
-      const todo = state.find(todo => todo.id === action.payload)
+    todoToggled: (state: TodoState, action: PayloadAction<number>) => {
+      const todo = state.list.find(todo => todo.id === action.payload)
       todo.completed = !todo.completed
     },
-    todoCleared: (state: TodoState[]) => {
-      state.splice(0)
+    todoCleared: (state: TodoState) => {
+      state.list.splice(0)
     }
   }
 })
 
 export const { todoAdded, todoToggled, todoCleared } = todosSlice.actions
-export default todosSlice.reducer
+export const todosReducer = todosSlice.reducer

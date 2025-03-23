@@ -22,12 +22,10 @@ export abstract class PwaPage extends ConnectMixin(store)(LitElement) {
 
   connectedCallback(): void {
     super.connectedCallback();
-    console.log('connectedCallback', this.href);
   }
 
   disconnectedCallback(): void {
     super.disconnectedCallback();
-    console.log('disconnectedCallback', this.href);
   }
 
   static styles: CSSResultGroup = css`

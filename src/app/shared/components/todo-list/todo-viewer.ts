@@ -37,8 +37,9 @@ export class TodoViewer extends ConnectMixin(store)(LitElement) {
     store.dispatch(todoCleared());
   }
 
-  _stateChanged(state: PwaState) {
-    this.todoList = state.todos;
+  protected _stateChanged(state: PwaState): void {
+    this.todoList = state.todos.list;
+    // this.todoList = state.state.todos.list;
   }
 
   static styles = [unsafeCSS(pwastyles), css`
