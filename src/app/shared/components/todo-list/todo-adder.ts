@@ -2,7 +2,8 @@ import { LitElement, css, html, unsafeCSS } from 'lit'
 import { customElement, property } from 'lit/decorators.js'
 
 // redux
-import { store, todoAdded } from '@redux';
+import { store } from '@/core/store';
+import { todoAdded } from '@store/actions/todos';
 
 // styles
 import pwastyles from '@styles/pwastyles.css?inline';
@@ -27,7 +28,7 @@ export class TodoAdder extends LitElement {
   private _onClickAdd() {
     // const todo = this.dummyTodos.shift();
     let input: HTMLInputElement = <HTMLInputElement> this.shadowRoot.getElementById("input");
-    store.dispatch(todoAdded(input.value));
+    store.dispatch(todoAdded({ text: input.value }));
   }
 
   // static styles = [ css`

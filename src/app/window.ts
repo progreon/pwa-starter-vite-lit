@@ -1,5 +1,5 @@
 // import { TemplateResult } from 'lit-element';
-import { PwaPage } from "@modules/pwa/PwaPage";
+import { PwaPage } from "@/core/components/pwa/PwaPage";
 // import { Dialog } from '@material/mwc-dialog';
 
 export { }

@@ -8,6 +8,25 @@
 - [x]  `POC` Redux
 - [x]  Redux Routing (let's try to make it simpler than last time)
 - [x]  `POC` App & pages
+- [x]  `Test` browser storage manager
+  - localforage (but only configured & used via the redux store atm, feel free to import it anywhere though)
+- [x]  Example content
+  - being added on the go
+- [ ]  `POC` Asset imports
+  - [x]  JSON (.json)
+  - [x]  Images (.png, .jpg, ...)
+  - [ ]  Text (.txt)
+  - [ ]  ...?
+- [ ]  clean up style import
+- [ ]  Proper naming of app & components
+  - [x]  app
+  - [ ]  components
+- [ ]  `Test` Mixing with JS components
+  - there seems to be an issue with importing lit in js files, but maybe it's because of the nesting of js-ts, to be investigated
+- [ ]  `POC` Building for different environments? (Vite config)
+  - [ ]  common
+  - [ ]  dev
+  - [ ]  prod
 - [ ]  More redux
   - [ ]  'App View'
     - [ ]  mobile
@@ -17,16 +36,6 @@
   - [ ]  mobile menu
   - [ ]  (list of) toast(s)
   - [ ]  ...?
-- [x]  `Test` browser storage manager
-  - localforage (but used via the redux store atm)
-- [ ]  `Test` Mixing with JS components
-- [ ]  `POC` Asset imports
-  - [ ]  JSON
-  - [ ]  Images
-  - [ ]  ...?
-- [ ]  Proper naming of app & components
-- [ ]  Example content: ?
-- [ ]  `POC` Building for different environments (Vite config)
 - [ ]  `POC` GitHub Actions
 - [ ]  `POC` Github Pages
 - [ ]  `POC` Firebase

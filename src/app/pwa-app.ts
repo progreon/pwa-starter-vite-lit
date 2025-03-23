@@ -3,7 +3,7 @@ import { CSSResultGroup, LitElement, css, html, unsafeCSS } from 'lit-element'
 import { customElement, property } from 'lit/decorators.js'
 
 // redux
-import { store, ConnectMixin, PwaState, installRouter } from '@redux';
+import { store, AppState } from '@/core/store';
 
 // styles
 import pwastyles from '@styles/pwastyles.css?inline';
@@ -12,6 +12,8 @@ import { PwaPage } from './core/components/pages/PwaPage';
 import { PwaPagePage1 } from './core/components/pages/pwa-page-page1';
 import { PwaPagePage2 } from './core/components/pages/pwa-page-page2';
 import { PwaPageHome } from './core/components/pages/pwa-page-home';
+import { ConnectMixin } from '@store/connectMixin';
+import { installRouter } from './router';
 
 // import '@pwaMenu/pwa-menu-bar';
 
@@ -76,7 +78,7 @@ export class PwaApp extends ConnectMixin(store)(LitElement) {
 
   @property({ type: String })
   public page: string = 'home';
-  private readonly rootNav: RootNav = new RootNav('/vite-lit', 'test title', {
+  private readonly rootNav: RootNav = new RootNav('/vite-pwa', 'test title', {
     'home': new Nav('Home', new PwaPageHome(this)),
     'test1': new Nav('Test 1', new PwaPagePage1(this)),
     'test2': new Nav('Test 2', new PwaPagePage2(this))
@@ -99,11 +101,10 @@ export class PwaApp extends ConnectMixin(store)(LitElement) {
   }
 
   render() {
-    // console.log(window.customElements.getName(PwaPage404));
     return html`
       <header>
-        <h1>This is the header</h1>
-        <h3>And this is a sub-header</h3>
+        <h1>Vite PWA</h1>
+        <h3>Making a PWA with Vite & Lit</h3>
       </header>
       <nav>
         ${this._renderNavMapUl(this.rootNav.navMap)}
@@ -181,10 +182,10 @@ export class PwaApp extends ConnectMixin(store)(LitElement) {
 
   connectedCallback(): void {
     super.connectedCallback();
-    installRouter(store, 'home', '/vite-lit');
+    installRouter(store, 'home', '/vite-pwa');
   }
 
-  protected _stateChanged(state: PwaState): void {
+  protected _stateChanged(state: AppState): void {
     this.page = state.router.page;
   }
 

@@ -1,5 +1,6 @@
 import { PwaApp } from '@/pwa-app';
-import { ConnectMixin, PwaState, store } from '@redux';
+import { AppState, store } from '@/core/store';
+import { ConnectMixin } from '@store/connectMixin';
 import { TemplateResult, CSSResultGroup, LitElement, css, html, unsafeCSS } from 'lit-element'
 import { property } from 'lit/decorators.js'
 
@@ -43,7 +44,7 @@ export abstract class PwaPage extends ConnectMixin(store)(LitElement) {
 
   protected abstract _render(): unknown;
 
-  protected _stateChanged(state: PwaState): void {
+  protected _stateChanged(state: AppState): void {
     // Implement this!
     console.debug('_stateChanged', this.href);
     // this.searchParams = new URLSearchParams(state.router.search);

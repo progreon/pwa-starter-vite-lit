@@ -6,6 +6,7 @@
     "module": "ESNext",
     "lib": ["ES2020", "DOM", "DOM.Iterable"],
     "skipLibCheck": true,
+    "allowJs": true,
 
     /* Bundler mode */
     "moduleResolution": "bundler",
@@ -26,6 +27,7 @@
     "paths": {
       "@/*": ["src/app/*"],
       "@core/*": ["src/app/core/*"],
+      "@store/*": ["src/app/core/store/*"],
       "@pages/*": ["src/app/core/components/pages/*"],
       "@pwaMenu/*": ["src/app/core/components/pwa-menu/*"],
       "@images/*": ["src/app/images/*"],
@@ -33,7 +35,6 @@
       "@styles/*": ["src/app/shared/styles/*"],
       "@components/*": ["src/app/shared/components/*"],
       "@modules/*": ["src/app/shared/modules/*"],
-      "@redux": ["src/app/shared/modules/redux"],
       "@data/*": ["src/app/shared/data/*"]
     }
   },

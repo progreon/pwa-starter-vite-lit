@@ -19,7 +19,7 @@
       "name": "Launch Chrome",
       "type": "chrome",
       "request": "launch",
-      "url": "http://localhost:5173/vite-lit/",
+      "url": "http://localhost:5173/vite-pwa/",
       "webRoot": "${workspaceFolder}",
       "userDataDir": "${workspaceFolder}/.vscode/vscode-chrome-debug-userdatadir",
       "presentation": {

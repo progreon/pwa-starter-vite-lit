@@ -1,5 +1,5 @@
-import { navigatedToPage } from "./routerSlice";
-import { PwaStore } from "./store";
+import { navigatedToPage } from "./core/store/actions/router";
+import { AppStore } from "./core/store";
 
 export class NavigateEvent extends CustomEvent<{ href: string; external?: boolean; }> {
   public static TYPE = 'navigate';
@@ -15,7 +15,7 @@ export class NavigateToPageEvent extends CustomEvent<{ page: string; }> {
   }
 }
 
-const doDispatch = (store: PwaStore, location: Location, defaultPage?: string, contextPath: string = '/', scroll: number = 0) => {
+const doDispatch = (store: AppStore, location: Location, defaultPage?: string, contextPath: string = '/', scroll: number = 0) => {
   const url = new URL(location.href);
 
   if (url.pathname.startsWith(contextPath)) {
@@ -29,7 +29,7 @@ const doDispatch = (store: PwaStore, location: Location, defaultPage?: string, c
   }
 }
 
-export const installRouter = (store: PwaStore, defaultPage?: string, contextPath: string = '/', getScrollCallback: () => number = () => 0) => {
+export const installRouter = (store: AppStore, defaultPage?: string, contextPath: string = '/', getScrollCallback: () => number = () => 0) => {
   // make sure the context path has a leading & ending slash
   contextPath = contextPath.startsWith('/') ? contextPath : '/' + contextPath;
   contextPath = contextPath.endsWith('/') ? contextPath : contextPath + '/';

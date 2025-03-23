@@ -1,6 +1,6 @@
 import { LitElement, html, css } from 'lit';
 import { customElement, property } from 'lit/decorators.js'
-import { PwaMenuItem } from '@modules/pwa/PwaMenuItem';
+import { PwaMenuItem } from '@/core/components/pwa/PwaMenuItem';
 
 // Component imports for this element
 import './pwa-menu-bar-item';

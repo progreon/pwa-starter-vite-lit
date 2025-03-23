@@ -2,10 +2,15 @@ import { LitElement, css, html, unsafeCSS } from 'lit-element'
 import { customElement, property } from 'lit/decorators.js'
 
 // redux
-import { store, ConnectMixin, todoToggled, PwaState, todoCleared } from '@redux';
+import { store, AppState } from '@/core/store';
+import { ConnectMixin } from '@store/connectMixin';
+import { todoAdded, todoToggled, todoCleared } from '@/core/store/actions/todos';
 
 // styles
 import pwastyles from '@styles/pwastyles.css?inline';
+
+// data
+import sampleTodos from '@data/sample-todos.json';
 
 @customElement('todo-viewer')
 export class TodoViewer extends ConnectMixin(store)(LitElement) {
@@ -18,7 +23,12 @@ export class TodoViewer extends ConnectMixin(store)(LitElement) {
       <p>TODO's:</p>
       <div class="card">
         <button @click=${this._onClickClear} part="button">
-          clear
+          Clear
+        </button>
+      <!-- </div> -->
+      <!-- <div class="card"> -->
+        <button @click=${this._onClickSample} part="button">
+          Fill sample todo's
         </button>
       </div>
       <ul>
@@ -37,9 +47,15 @@ export class TodoViewer extends ConnectMixin(store)(LitElement) {
     store.dispatch(todoCleared());
   }
 
-  protected _stateChanged(state: PwaState): void {
+  _onClickSample() {
+    console.log('_onClickDummy', sampleTodos)
+    sampleTodos.list.forEach(todo => {
+      store.dispatch(todoAdded({ text: todo.text, completed: todo.completed }))
+    })
+  }
+
+  protected _stateChanged(state: AppState): void {
     this.todoList = state.todos.list;
-    // this.todoList = state.state.todos.list;
   }
 
   static styles = [unsafeCSS(pwastyles), css`

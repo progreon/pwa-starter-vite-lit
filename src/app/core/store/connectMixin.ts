@@ -1,8 +1,8 @@
 import { LitElement } from 'lit';
-import { PwaStore, PwaState } from './store';
+import { AppStore, AppState } from '.';
 
 declare type Constructor<T> = new (...args: any[]) => T;
-export const ConnectMixin = (store: PwaStore) => <T extends Constructor<LitElement>>(superClass: T) => class extends superClass {
+export const ConnectMixin = (store: AppStore) => <T extends Constructor<LitElement>>(superClass: T) => class extends superClass {
   protected __storeUnsubscribe: () => void;
   connectedCallback() {
     // Connect the element to the store.
@@ -22,7 +22,7 @@ export const ConnectMixin = (store: PwaStore) => <T extends Constructor<LitEleme
     }
   }
   // This is called every time something is updated in the store.
-  protected _stateChanged(state: PwaState): void {
+  protected _stateChanged(state: AppState): void {
     throw new Error('_stateChanged() not implemented');
   }
 };

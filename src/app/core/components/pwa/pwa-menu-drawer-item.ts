@@ -1,6 +1,6 @@
 import { LitElement, html, css } from 'lit';
 import { customElement, property } from 'lit/decorators.js'
-import { PwaMenuItem } from '@modules/pwa/PwaMenuItem';
+import { PwaMenuItem } from '@/core/components/pwa/PwaMenuItem';
 
 // These are the shared styles needed by this element.
 import { AppStyles } from '@styles/app-styles';

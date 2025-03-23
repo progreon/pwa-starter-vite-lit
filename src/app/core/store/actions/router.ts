@@ -27,4 +27,3 @@ export const routerSlice = createSlice({
 });
 
 export const { navigatedToPage } = routerSlice.actions;
-export const routerReducer = routerSlice.reducer;

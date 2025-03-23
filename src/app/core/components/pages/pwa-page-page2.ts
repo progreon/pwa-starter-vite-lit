@@ -1,7 +1,7 @@
 import { TemplateResult, CSSResultGroup, LitElement, css, html, unsafeCSS } from 'lit-element'
 import { customElement, property } from 'lit/decorators.js'
 import { PwaPage } from './PwaPage';
-import { PwaState } from '@/shared/modules/redux';
+import { AppState } from '@/core/store';
 
 @customElement('pwa-page-page2')
 export class PwaPagePage2 extends PwaPage {
@@ -22,7 +22,7 @@ export class PwaPagePage2 extends PwaPage {
     `
   }
 
-  protected _stateChanged(state: PwaState): void {
+  protected _stateChanged(state: AppState): void {
     super._stateChanged(state);
     this.searchParams = new URLSearchParams(state.router.search);
     this.hash = state.router.hash;

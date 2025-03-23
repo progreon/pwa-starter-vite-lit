@@ -1,0 +1,20 @@
+{
+  "list": [
+    {
+      "text": "lorem",
+      "completed": true
+    },
+    {
+      "text": "ipsum",
+      "completed": false
+    },
+    {
+      "text": "foo",
+      "completed": true
+    },
+    {
+      "text": "bar",
+      "completed": false
+    }
+  ]
+}

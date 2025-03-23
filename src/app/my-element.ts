@@ -4,11 +4,13 @@ import { PWAElement } from './PWAElement'
 
 import litLogo from '/assets/lit.svg'
 import appLogo from '/favicon.svg'
-// import './pwa-updater'
+// import '@components/pwa-badge/pwa-badge'
 import '@components/todo-list/todo-viewer'
 import '@components/todo-list/todo-adder'
-import { store, ConnectMixin, PwaState, increment, navigate, navigateToPage } from '@redux'
-import { installRouter } from './shared/modules/redux/router'
+import { installRouter, navigateToPage } from './router'
+import { ConnectMixin } from '@store/connectMixin'
+import { increment } from '@store/actions/counter'
+import { AppState, store } from '@core/store'
 
 /**
  * An example element.
@@ -47,10 +49,10 @@ export class MyElement extends ConnectMixin(store)(LitElement) {
         <slot></slot>
         <div>Current page: ${this.page}</div>
         <div>
-          <a href="/vite-lit/">home</a>|
-          <a href="/vite-lit/test1">test1</a>|
-          <a href="/vite-lit/test2?p1=foo&p2=bar#asdf">test2</a>|
-          <a href="/vite-lit/test2/sub">sub2</a>|
+          <a href="/vite-pwa/">home</a>|
+          <a href="/vite-pwa/test1">test1</a>|
+          <a href="/vite-pwa/test2?p1=foo&p2=bar#asdf">test2</a>|
+          <a href="/vite-pwa/test2/sub">sub2</a>|
           <a href="/noctx">noctx</a>|
           <a href="/otherctx/test">otherctx</a>|
           <a @click=${this._onAClick}>_onAClick</a>
@@ -72,7 +74,7 @@ export class MyElement extends ConnectMixin(store)(LitElement) {
 
   connectedCallback(): void {
     super.connectedCallback();
-    installRouter(store, 'home', '/vite-lit');
+    installRouter(store, 'home', '/vite-pwa');
   }
 
   private _onClick() {
@@ -83,7 +85,7 @@ export class MyElement extends ConnectMixin(store)(LitElement) {
     navigateToPage('_onAClick');
   }
 
-  _stateChanged(state: PwaState) {
+  _stateChanged(state: AppState) {
     this.count = state.counter.value;
     this.page = state.router.page;
   }
