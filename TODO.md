@@ -12,11 +12,11 @@
   - localforage (but only configured & used via the redux store atm, feel free to import it anywhere though)
 - [x]  Example content
   - being added on the go
-- [ ]  `POC` Asset imports
+- [x]  `POC` Asset imports
   - [x]  JSON (.json)
   - [x]  Images (.png, .jpg, ...)
-  - [ ]  Text (.txt)
-  - [ ]  ...?
+  - [x]  Text (.txt)
+  - [x]  CSV (.csv)
 - [ ]  clean up style import
 - [ ]  Proper naming of app & components
   - [x]  app
