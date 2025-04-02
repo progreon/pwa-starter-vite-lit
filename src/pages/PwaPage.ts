@@ -47,7 +47,7 @@ export abstract class PwaPage extends ConnectMixin(store)(LitElement) {
 
   protected _stateChanged(state: AppState): void {
     // Implement this!
-    console.debug('_stateChanged', this.href);
+    // console.debug('_stateChanged, to be implemented in page', this.href);
     // this.searchParams = new URLSearchParams(state.router.search);
   }
 

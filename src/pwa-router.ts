@@ -9,32 +9,48 @@ export class PwaRoute {
   constructor(
     public readonly title: string,
     public readonly page: PwaPage,
-    public readonly routes?: PwaRouteMap,
-    public readonly showInMenu = true
+    private readonly _authorizations: string[] = [],
+    public readonly fullSize = false,
+    public readonly showInMenu = true,
+    public readonly subRoutes?: PwaRouteMap
   ) { }
   protected set href(href: string) {
     this._href = href;
     this.page.href = href;
-    if (this.routes) {
-      Object.keys(this.routes).forEach(key => {
-        const nav = this.routes[key];
-        nav.href = (href ? href + PwaRoute.HREF_DELIMITER : '') + key;
+    if (this.subRoutes) {
+      Object.keys(this.subRoutes).forEach(key => {
+        const route = this.subRoutes[key];
+        route.href = (href ? href + PwaRoute.HREF_DELIMITER : '') + key;
       })
     }
   }
   get href(): string {
     return this._href;
   }
-  getPage(key: string): PwaPage {
+  getRoute(key: string, authorizations: string[] = [], mayViewAllPages = false): PwaRoute {
     if (!key) {
-      return this.page;
+      return this;
     } else {
       const i = key.indexOf(PwaRoute.HREF_DELIMITER);
       const subKey = i >= 0 ? key.substring(0, key.indexOf(PwaRoute.HREF_DELIMITER)) : key;
       const restKey = i >= 0 ? key.substring(key.indexOf(PwaRoute.HREF_DELIMITER) + 1) : undefined;
-      const subNav = this.routes[subKey];
-      return subNav ? subNav.getPage(restKey) : undefined;
+      const subRoute = this.subRoutes[subKey];
+      return subRoute ? subRoute.getRoute(restKey, authorizations, mayViewAllPages) : undefined;
     }
+  }
+  // getPage(key: string, authorizations: string[] = [], mayViewAllPages = false): PwaPage {
+  //   if (!key) {
+  //     return this.page;
+  //   } else {
+  //     const i = key.indexOf(PwaRoute.HREF_DELIMITER);
+  //     const subKey = i >= 0 ? key.substring(0, key.indexOf(PwaRoute.HREF_DELIMITER)) : key;
+  //     const restKey = i >= 0 ? key.substring(key.indexOf(PwaRoute.HREF_DELIMITER) + 1) : undefined;
+  //     const subRoute = this.subRoutes[subKey];
+  //     return subRoute ? subRoute.getPage(restKey, authorizations, mayViewAllPages) : undefined;
+  //   }
+  // }
+  isAuthorized(authorizations: string[], mayViewAllPages = false): boolean {
+    return mayViewAllPages || this._authorizations.every(a => authorizations.includes(a));
   }
 }
 
@@ -44,15 +60,23 @@ export class PwaRoutes extends PwaRoute {
     title: string,
     routes: PwaRouteMap,
     public readonly fourOFour: PwaRoute,
+    public readonly fourOOne: PwaRoute,
     public readonly home: string = 'home'
   ) {
-    // super('/', '/', '/', subnav[home].page, subnav);
-    super(title, routes[home]?.page, routes);
+    super(title, routes[home]?.page, [], false, true, routes);
     this.href = contextPath;
-    // this.href = '';
   }
-  getPage(key: string): PwaPage {
-    const page = super.getPage(key);
-    return page || this.fourOFour.page;
+  getRoute(key: string, authorizations: string[] = [], mayViewAllPages = false): PwaRoute {
+    const page = super.getRoute(key, authorizations, mayViewAllPages);
+    if (page) {
+      if (page.isAuthorized(authorizations, mayViewAllPages)) {
+        return page;
+      } else {
+        return this.fourOOne;
+      }
+    } else {
+      return this.fourOFour;
+    }
+    // return page || this.fourOFour.page;
   }
 }

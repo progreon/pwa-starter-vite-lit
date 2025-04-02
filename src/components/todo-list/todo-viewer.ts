@@ -63,14 +63,12 @@ export class TodoViewer extends ConnectMixin(store)(LitElement) {
   _onClickSampleJson() {
     type JTodo = typeof sampleTodosJson;
     const typedJson: JTodo = sampleTodosJson;
-    console.log('_onClickDummy', sampleTodosJson)
     typedJson.list.forEach(todo => {
       store.dispatch(todoAdded({ text: todo.text, completed: todo.completed }))
     })
   }
 
   _onClickSampleTxt() {
-    console.log('_onClickDummy', sampleTodosTxt)
     const rows = sampleTodosTxt.split(/\r?\n/).map(r => ({ text: r.substring(1), completed: r[0] == '+' }));
     rows.forEach(todo => {
       store.dispatch(todoAdded({ text: todo.text, completed: todo.completed }))
@@ -79,7 +77,6 @@ export class TodoViewer extends ConnectMixin(store)(LitElement) {
 
   _onClickSampleCsv() {
     const parsed = this._parseCsv(sampleTodosCsv);
-    console.log('_onClickDummy', parsed);
     parsed.forEach(todo => {
       store.dispatch(todoAdded({ text: todo.text, completed: todo.completed }))
     })

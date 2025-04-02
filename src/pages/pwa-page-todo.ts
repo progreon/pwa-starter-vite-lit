@@ -6,8 +6,8 @@ import { PwaPage } from './PwaPage';
 
 import 'src/components/todo-list/todo-viewer';
 
-@customElement('pwa-page-page1')
-export class PwaPagePage1 extends PwaPage {
+@customElement('pwa-page-todo')
+export class PwaPageTodo extends PwaPage {
 
   static styles = [
     // unsafeCSS(pwastyles),
