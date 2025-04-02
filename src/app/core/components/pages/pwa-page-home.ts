@@ -5,6 +5,8 @@ import { PwaPage } from './PwaPage';
 import '@components/todo-list/todo-adder';
 import '@components/todo-list/todo-viewer';
 
+import "@volvo/vcdk";
+
 @customElement('pwa-page-home')
 export class PwaPageHome extends PwaPage {
   _render() {
@@ -16,6 +18,9 @@ export class PwaPageHome extends PwaPage {
       <todo-adder></todo-adder>
       <hr>
       <todo-viewer></todo-viewer>
+      <hr>
+      <p>vcdk test</p>
+      <vcdk-button>Click me</vcdk-button>
     `
   }
 }

@@ -1,4 +1,6 @@
 /* @import "tailwindcss"; */
+@import 'node_modules/@volvo/vcdk/dist/themes/all-semantic.css';
+@import 'node_modules/@volvo/vcdk/dist/themes/all-primitive.css';
 
 :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;

@@ -12,9 +12,16 @@
     "serve": "serve dist"
   },
   "dependencies": {
+    "@floating-ui/dom": "1.x",
+    "@lit/context": "1.x",
+    "@lit/task": "1.x",
     "@reduxjs/toolkit": "^2.6.1",
+    "@volvo/vcdk": "^9.8.0",
+    "date-fns": "3.x",
+    "element-internals-polyfill": "1.x",
     "lit": "^3.2.1",
     "localforage": "^1.10.0",
+    "lodash-es": "4.x",
     "redux-persist": "^6.0.0",
     "tailwindcss": "^4.0.14"
   },
