@@ -2,12 +2,12 @@ import { LitElement, css, html, unsafeCSS } from 'lit-element'
 import { customElement, property } from 'lit/decorators.js'
 
 // redux
-import { store, AppState } from '@/core/store';
+import { store, AppState } from '@store/store';
 import { ConnectMixin } from '@store/connectMixin';
-import { todoAdded, todoToggled, todoCleared } from '@/core/store/actions/todos';
+import { todoAdded, todoToggled, todoCleared } from '@actions/todos';
 
 // styles
-import pwastyles from '@styles/pwastyles.css?inline';
+import pwastyles from '@/pwastyles.css?inline';
 
 // data
 import sampleTodos from '@data/sample-todos.json';

@@ -1,7 +1,7 @@
 import { TemplateResult, CSSResultGroup, LitElement, css, html, unsafeCSS } from 'lit-element'
 import { customElement, property } from 'lit/decorators.js'
 import { PwaPage } from './PwaPage';
-import { AppState } from '@/core/store';
+import { AppState } from '@/core/store/store';
 
 @customElement('pwa-page-page2')
 export class PwaPagePage2 extends PwaPage {
@@ -10,6 +10,16 @@ export class PwaPagePage2 extends PwaPage {
   private searchParams: URLSearchParams;
   @property({ type: String })
   private hash: string;
+
+  static styles = [
+    // unsafeCSS(pwastyles),
+    css`
+      /* :host {
+        display: block;
+        padding: 16px;
+      } */
+    `
+  ];
 
   protected _render(): unknown {
     return html`

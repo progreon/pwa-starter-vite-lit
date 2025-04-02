@@ -1,5 +1,5 @@
 import { LitElement } from 'lit';
-import { AppStore, AppState } from '.';
+import { AppStore, AppState } from './store';
 
 declare type Constructor<T> = new (...args: any[]) => T;
 export const ConnectMixin = (store: AppStore) => <T extends Constructor<LitElement>>(superClass: T) => class extends superClass {

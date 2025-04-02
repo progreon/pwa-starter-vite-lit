@@ -25,17 +25,19 @@
     /* Category: ? */
     "baseUrl": "./",
     "paths": {
-      "@/*": ["src/app/*"],
-      "@core/*": ["src/app/core/*"],
-      "@store/*": ["src/app/core/store/*"],
-      "@pages/*": ["src/app/core/components/pages/*"],
-      "@pwaMenu/*": ["src/app/core/components/pwa-menu/*"],
-      "@images/*": ["src/app/images/*"],
-      "@shared/*": ["src/app/shared/*"],
-      "@styles/*": ["src/app/shared/styles/*"],
-      "@components/*": ["src/app/shared/components/*"],
-      "@modules/*": ["src/app/shared/modules/*"],
-      "@data/*": ["src/app/shared/data/*"]
+      "@/*": ["src/*"],
+      "@core/*": ["src/core/*"],
+      "@store/*": ["src/core/store/*"],
+      "@actions/*": ["src/core/store/actions/*"],
+      "@models/*": ["src/core/models/*"],
+      "@pages/*": ["src/pages/*"],
+      // "@pwaMenu/*": ["src/app/core/components/pwa-menu/*"],
+      "@images/*": ["src/images/*"],
+      // "@shared/*": ["src/app/shared/*"],
+      // "@styles/*": ["src/app/shared/styles/*"],
+      "@components/*": ["src/components/*"],
+      // "@modules/*": ["src/app/shared/modules/*"],
+      "@data/*": ["src/data/*"]
     }
   },
   "include": ["src"]

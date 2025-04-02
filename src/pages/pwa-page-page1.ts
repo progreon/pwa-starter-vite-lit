@@ -1,11 +1,24 @@
-import { TemplateResult, CSSResultGroup, LitElement, css, html, unsafeCSS } from 'lit-element'
-import { customElement, property } from 'lit/decorators.js'
+import { css, html, unsafeCSS } from 'lit-element'
+import { customElement } from 'lit/decorators.js'
 import { PwaPage } from './PwaPage';
 
-import '@components/todo-list/todo-viewer';
+// import pwastyles from '@/pwastyles.css?inline';
+
+import 'src/components/todo-list/todo-viewer';
 
 @customElement('pwa-page-page1')
 export class PwaPagePage1 extends PwaPage {
+
+  static styles = [
+    // unsafeCSS(pwastyles),
+    css`
+      /* :host {
+        display: block;
+        padding: 16px;
+      } */
+    `
+  ];
+
   _render() {
     return html`
       <h2>Thanks for clicking on Test 1!</h2>

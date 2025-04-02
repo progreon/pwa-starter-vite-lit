@@ -1,16 +1,16 @@
-import { LitElement, css, html } from 'lit'
+import { LitElement, css, html, unsafeCSS } from 'lit'
 import { customElement, property } from 'lit/decorators.js'
-import { PWAElement } from './PWAElement'
+import pwastyles from './pwastyles.css?inline';
 
 import litLogo from '/assets/lit.svg'
 import appLogo from '/favicon.svg'
 // import '@components/pwa-badge/pwa-badge'
 import '@components/todo-list/todo-viewer'
 import '@components/todo-list/todo-adder'
-import { installRouter, navigateToPage } from './router'
+import { installRouter, navigateToPage } from '@store/router'
 import { ConnectMixin } from '@store/connectMixin'
-import { increment } from '@store/actions/counter'
-import { AppState, store } from '@core/store'
+import { increment } from '@actions/counter'
+import { AppState, store } from '@store/store'
 
 /**
  * An example element.
@@ -90,7 +90,7 @@ export class MyElement extends ConnectMixin(store)(LitElement) {
     this.page = state.router.page;
   }
 
-  static styles = [PWAElement.styles, css`
+  static styles = [unsafeCSS(pwastyles), css`
     /* * {
       border: 1px solid red;
     } */

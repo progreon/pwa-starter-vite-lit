@@ -17,10 +17,10 @@
   - [x]  Images (.png, .jpg, ...)
   - [ ]  Text (.txt)
   - [ ]  ...?
-- [ ]  clean up style import
-- [ ]  Proper naming of app & components
+- [x]  clean up style import
+- [x]  Proper naming of app & components
   - [x]  app
-  - [ ]  components
+  - [x]  components
 - [ ]  `Test` Mixing with JS components
   - there seems to be an issue with importing lit in js files, but maybe it's because of the nesting of js-ts, to be investigated
 - [ ]  `POC` Building for different environments? (Vite config)

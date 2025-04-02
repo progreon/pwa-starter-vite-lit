@@ -1,8 +1,9 @@
-import { PwaApp } from '@/pwa-app';
-import { AppState, store } from '@/core/store';
-import { ConnectMixin } from '@store/connectMixin';
-import { TemplateResult, CSSResultGroup, LitElement, css, html, unsafeCSS } from 'lit-element'
+import { LitElement } from 'lit-element'
 import { property } from 'lit/decorators.js'
+
+import { PwaApp } from '@/pwa-app';
+import { AppState, store } from '@store/store';
+import { ConnectMixin } from '@store/connectMixin';
 
 // These are the shared styles needed by this element.
 // import { AppStyles } from 'Shared/app-styles';
@@ -29,9 +30,9 @@ export abstract class PwaPage extends ConnectMixin(store)(LitElement) {
     super.disconnectedCallback();
   }
 
-  static styles: CSSResultGroup = css`
-    /* TODO: put some default styles here, if that even works? */
-  `;
+  // static styles: CSSResultGroup = css`
+  //   /* TODO: put some default styles here, if that even works? */
+  // `;
 
   // Only render this page if it's actually visible.
   protected render(): unknown {

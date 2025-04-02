@@ -2,11 +2,11 @@ import { LitElement, css, html, unsafeCSS } from 'lit'
 import { customElement, property } from 'lit/decorators.js'
 
 // redux
-import { store } from '@/core/store';
-import { todoAdded } from '@store/actions/todos';
+import { store } from '@store/store';
+import { todoAdded } from '@actions/todos';
 
 // styles
-import pwastyles from '@styles/pwastyles.css?inline';
+import pwastyles from '@/pwastyles.css?inline';
 
 @customElement('todo-adder')
 export class TodoAdder extends LitElement {

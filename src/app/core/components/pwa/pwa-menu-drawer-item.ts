@@ -1,12 +1,12 @@
 import { LitElement, html, css } from 'lit';
 import { customElement, property } from 'lit/decorators.js'
-import { PwaMenuItem } from '@/core/components/pwa/PwaMenuItem';
+import { PwaMenuItem } from './PwaMenuItem';
 
 // These are the shared styles needed by this element.
-import { AppStyles } from '@styles/app-styles';
+import { AppStyles } from 'src/app-styles';
 
 // Image imports for this element
-import { angleDownIcon, angleUpIcon } from '@shared/my-icons';
+import { angleDownIcon, angleUpIcon } from 'src/images/my-icons';
 
 @customElement('pwa-menu-drawer-item')
 export class PwaMenuDrawerItem extends LitElement {

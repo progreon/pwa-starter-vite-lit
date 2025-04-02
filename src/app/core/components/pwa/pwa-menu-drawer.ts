@@ -1,12 +1,12 @@
 import { LitElement, html, css } from 'lit-element';
 import { customElement, property } from 'lit/decorators.js'
-import { PwaMenuItem } from '@/core/components/pwa/PwaMenuItem';
+import { PwaMenuItem } from './PwaMenuItem';
 
 // Component imports for this element
 import './pwa-menu-drawer-item';
 
 // These are the shared styles needed by this element.
-import { AppStyles } from '@styles/app-styles';
+import { AppStyles } from 'src/app-styles';
 
 @customElement('pwa-menu-drawer')
 export class PwaMenuDrawer extends LitElement {

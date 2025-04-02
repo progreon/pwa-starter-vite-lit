@@ -1,5 +1,5 @@
-import { navigatedToPage } from "./core/store/actions/router";
-import { AppStore } from "./core/store";
+import { navigatedToPage } from "./actions/router";
+import { AppStore } from "./store";
 
 export class NavigateEvent extends CustomEvent<{ href: string; external?: boolean; }> {
   public static TYPE = 'navigate';

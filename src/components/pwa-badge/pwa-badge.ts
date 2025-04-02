@@ -1,3 +1,5 @@
+// TODO: move non-UI logic to pwa-app.ts, according to the old codebase
+
 import { LitElement, css, html } from 'lit'
 import { customElement, property, state } from 'lit/decorators.js'
 import { registerSW } from 'virtual:pwa-register'
