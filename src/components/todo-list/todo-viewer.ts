@@ -1,3 +1,4 @@
+// @ts-check
 import { LitElement, css, html, unsafeCSS } from 'lit-element'
 import { customElement, property } from 'lit/decorators.js'
 
@@ -10,7 +11,9 @@ import { todoAdded, todoToggled, todoCleared } from '@actions/todos';
 import pwastyles from '@/pwastyles.css?inline';
 
 // data
-import sampleTodos from '@data/sample-todos.json';
+import sampleTodosJson from '@data/sample-todos.json';
+import sampleTodosTxt from '@data/sample-todos.txt?raw';
+import sampleTodosCsv from '@data/sample-todos.csv?raw';
 
 @customElement('todo-viewer')
 export class TodoViewer extends ConnectMixin(store)(LitElement) {
@@ -27,8 +30,18 @@ export class TodoViewer extends ConnectMixin(store)(LitElement) {
         </button>
       <!-- </div> -->
       <!-- <div class="card"> -->
-        <button @click=${this._onClickSample} part="button">
-          Fill sample todo's
+        <button @click=${this._onClickSampleJson} part="button">
+          Fill samples from .json
+        </button>
+      <!-- </div> -->
+      <!-- <div class="card"> -->
+        <button @click=${this._onClickSampleTxt} part="button">
+          Fill samples from .txt
+        </button>
+      <!-- </div> -->
+      <!-- <div class="card"> -->
+        <button @click=${this._onClickSampleCsv} part="button">
+          Fill samples from .csv
         </button>
       </div>
       <ul>
@@ -47,11 +60,38 @@ export class TodoViewer extends ConnectMixin(store)(LitElement) {
     store.dispatch(todoCleared());
   }
 
-  _onClickSample() {
-    console.log('_onClickDummy', sampleTodos)
-    sampleTodos.list.forEach(todo => {
+  _onClickSampleJson() {
+    type JTodo = typeof sampleTodosJson;
+    const typedJson: JTodo = sampleTodosJson;
+    console.log('_onClickDummy', sampleTodosJson)
+    typedJson.list.forEach(todo => {
       store.dispatch(todoAdded({ text: todo.text, completed: todo.completed }))
     })
+  }
+
+  _onClickSampleTxt() {
+    console.log('_onClickDummy', sampleTodosTxt)
+    const rows = sampleTodosTxt.split(/\r?\n/).map(r => ({ text: r.substring(1), completed: r[0] == '+' }));
+    rows.forEach(todo => {
+      store.dispatch(todoAdded({ text: todo.text, completed: todo.completed }))
+    })
+  }
+
+  _onClickSampleCsv() {
+    const parsed = this._parseCsv(sampleTodosCsv);
+    console.log('_onClickDummy', parsed);
+    parsed.forEach(todo => {
+      store.dispatch(todoAdded({ text: todo.text, completed: todo.completed }))
+    })
+  }
+
+  _parseCsv(data: string, withHeader = true, ...delimiters: string[]): any {
+    delimiters.length || delimiters.push(';');
+    const rows = data.split(/\r?\n/).map(r => r.split(new RegExp(delimiters.map(d => `\\${d}`).join("|"))));
+    const n = rows[0].length;
+    if (rows.filter(r => r.length != n).length) return (console.error("Inconsistent column count!"), []);
+    const header = withHeader ? rows.shift() : Array.from({ length: n }, (_, i) => i + '');
+    return rows.map(values => header.reduce((resRow, h, i) => { resRow[h] = values[i] == '0' ? 0 : +values[i] || (['true', 'false'].includes(values[i]) ? values[i] == 'true' : values[i]); return resRow }, {}));
   }
 
   protected _stateChanged(state: AppState): void {
