@@ -22,7 +22,7 @@ export class PwaPage404 extends PwaPage {
     return html`
       <h2>Oops! You hit a 404</h2>
       <p>The page you're looking for doesn't seem to exist. Head back
-          <a href="/vite-pwa/">home</a> and try again?
+          <a href=${window.MyAppGlobals.rootPath}>home</a> and try again?
       </p>
       <img src="${jpgUnlit}" alt="">
     `

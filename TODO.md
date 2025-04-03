@@ -23,10 +23,10 @@
   - [x]  components
 - [ ]  `Test` Mixing with JS components
   - there seems to be an issue with importing lit in js files, but maybe it's because of the nesting of js-ts, to be investigated
-- [ ]  `POC` Building for different environments? (Vite config)
-  - [ ]  common
-  - [ ]  dev
-  - [ ]  prod
+- [x]  `POC` Building for different environments? (Vite config)
+  - [x]  common
+  - [x]  local
+  - [x]  prod
 - [ ]  More redux
   - [ ]  'App View'
     - [ ]  mobile

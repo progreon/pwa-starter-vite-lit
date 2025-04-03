@@ -15,6 +15,9 @@ export class PwaRoute {
     public readonly subRoutes?: PwaRouteMap
   ) { }
   protected set href(href: string) {
+    if (href.endsWith(PwaRoute.HREF_DELIMITER)) {
+      href = href.substring(0, href.length - PwaRoute.HREF_DELIMITER.length);
+    }
     this._href = href;
     this.page.href = href;
     if (this.subRoutes) {
@@ -38,17 +41,6 @@ export class PwaRoute {
       return subRoute ? subRoute.getRoute(restKey, authorizations, mayViewAllPages) : undefined;
     }
   }
-  // getPage(key: string, authorizations: string[] = [], mayViewAllPages = false): PwaPage {
-  //   if (!key) {
-  //     return this.page;
-  //   } else {
-  //     const i = key.indexOf(PwaRoute.HREF_DELIMITER);
-  //     const subKey = i >= 0 ? key.substring(0, key.indexOf(PwaRoute.HREF_DELIMITER)) : key;
-  //     const restKey = i >= 0 ? key.substring(key.indexOf(PwaRoute.HREF_DELIMITER) + 1) : undefined;
-  //     const subRoute = this.subRoutes[subKey];
-  //     return subRoute ? subRoute.getPage(restKey, authorizations, mayViewAllPages) : undefined;
-  //   }
-  // }
   isAuthorized(authorizations: string[], mayViewAllPages = false): boolean {
     return mayViewAllPages || this._authorizations.every(a => authorizations.includes(a));
   }

@@ -3,16 +3,20 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title><%= title %></title>
-
+    <script>
+      window.MyAppGlobals = {
+        appTitle: '<%= appTitle %>',
+        appName: '<%= appName %>',
+        version: '<%= version %>',
+        rootPath: '<%= basePath %>',
+        wideWidth: '<%= wideWidth %>',
+        serverConfig: <%- serverConfig %>
+      }
+    </script>
     <link rel="stylesheet" href="/src/index.css" />
     <script type="module" src="/src/pwa-app.ts"></script>
-    <!-- <script type="module" src="/src/app/my-element.ts"></script> -->
   </head>
   <body>
-    <!-- <my-element class="">
-      <h1 class="m-auto">vite-pwa-test</h1>
-    </my-element> -->
     <pwa-app></pwa-app>
   </body>
 </html>

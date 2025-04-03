@@ -1,13 +1,15 @@
 {
   "name": "vite-pwa-test",
   "private": true,
-  "version": "0.0.0",
+  "version": "0.0.1",
   "type": "module",
   "license": "ISC",
   "scripts": {
-    "dev": "vite",
+    "dev": "vite --mode development",
     "start": "yarn dev --open",
-    "build": "tsc && vite build",
+    "build": "yarn build:prod",
+    "build:dev": "tsc && vite build --mode development",
+    "build:prod": "tsc && vite build --mode production",
     "preview": "vite preview",
     "serve": "serve dist"
   },

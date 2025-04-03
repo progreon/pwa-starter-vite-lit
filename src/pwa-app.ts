@@ -31,7 +31,7 @@ export class PwaApp extends ConnectMixin(store)(LitElement) {
   @property({ type: Array })
   public authorizations: string[] = [];
 
-  private readonly siteMap: PwaRoutes = new PwaRoutes('/vite-pwa', 'test title', {
+  private readonly siteMap: PwaRoutes = new PwaRoutes(window.MyAppGlobals.rootPath, 'test title', {
       'home': new PwaRoute('Home', new PwaPageHome(this)),
       'todo': new PwaRoute('Todo', new PwaPageTodo(this), ['VIEW_TODO']),
       'url-test': new PwaRoute('URL Test', new PwaPageUrlTest(this))
@@ -139,7 +139,7 @@ export class PwaApp extends ConnectMixin(store)(LitElement) {
 
   connectedCallback(): void {
     super.connectedCallback();
-    installRouter(store, 'home', '/vite-pwa');
+    installRouter(store, 'home', window.MyAppGlobals.rootPath);
   }
 
   protected _stateChanged(state: AppState, lastState: AppState): void {

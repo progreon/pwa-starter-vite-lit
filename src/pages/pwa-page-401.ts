@@ -22,7 +22,7 @@ export class PwaPage401 extends PwaPage {
     return html`
       <h2>Unauthorized</h2>
       <p>It seems you're not authorized to see this page. Head back
-          <a href="/vite-pwa/">login</a> and try again?
+          <a href=${window.MyAppGlobals.rootPath}>login</a> and try again?
       </p>
       <img src="${jpgUnlit}" alt="">
     `

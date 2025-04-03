@@ -10,7 +10,7 @@ declare global {
     app: any;
     appConfig: { app: string, version: string };
     // appConfig: { app: string, siteMap: PwaPage[], pageList: { [key: string]: PwaPage } };
-    MyAppGlobals: any;
+    MyAppGlobals: { appName: string, version: string, rootPath: string, wideWidth: string, serverConfig: any };
     isUpdateAvailable: any;
     isMobileView: () => boolean;
     // openMwcDialog: (template: TemplateResult, dialogAtt?: { [key: string]: boolean|string }) => Dialog;
